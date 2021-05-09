@@ -34,6 +34,10 @@ export default {
   border: 1px solid #2C3E50;
 }
 
+.me-1 {
+  margin-inline-end: 1em;
+}
+
 .mb-1 {
   margin-bottom: 1em;
 }
