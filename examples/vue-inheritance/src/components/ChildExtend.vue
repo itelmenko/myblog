@@ -5,7 +5,7 @@ export default {
   extends: Parent,
   data() {
     return {
-      title: 'Child',
+      title: 'ChildExtend',
       actions: [
         { text: 'Increment', handler: this.increment },
         { text: 'Decrement', handler: this.decrement },

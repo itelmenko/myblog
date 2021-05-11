@@ -4,7 +4,8 @@
       {{ title }}
     </h1>
     <div>
-      <p>Param: {{ param }}</p>
+      <p>mixinData1: {{ mixinData1 }}</p>
+      <p>mixinData2: {{ mixinData2 }}</p>
       <p>Data: {{ index }}</p>
       <p>
         <button
@@ -19,29 +20,28 @@
   </div>
 </template>
 <script>
+import incrementMixin from "@/mixins/incrementMixin"
+import decrementMixin from "@/mixins/decrementMixin";
 export default {
-  name: 'Parent',
-  props: {
-    param: { type: String, default: '' },
-  },
+  name: 'Mix',
+  mixins: [ incrementMixin, decrementMixin ],
   data() {
     return {
-      title: 'Parent',
+      title: 'Mix',
       index: 0,
       actions: [
         { text: 'Increment', handler: this.increment },
+        { text: 'Decrement', handler: this.decrement },
+        { text: 'Clear', handler: this.clear },
       ]
     }
   },
   created() {
-    console.info(`Parent's hook "created" for component "${this.title}"`);
+    console.info(`Mix component hook "created"`);
   },
   methods: {
     clear() {
       this.index = 0;
-    },
-    increment() {
-      this.index++;
     },
   }
 }

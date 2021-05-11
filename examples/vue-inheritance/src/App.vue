@@ -1,5 +1,9 @@
 <template>
   <div id="app">
+    <h1>Extending Vue.js Components</h1>
+    <h2>Using mixins</h2>
+    <Mix></Mix>
+    <h2>Using extends</h2>
     <Parent param="param value 1"></Parent>
     <ChildExtend param="param value 2"></ChildExtend>
   </div>
@@ -8,10 +12,12 @@
 <script>
 import Parent from './components/Parent'
 import ChildExtend from "./components/ChildExtend";
+import Mix from "@/components/Mix";
 
 export default {
   name: 'App',
   components: {
+    Mix,
     ChildExtend,
     Parent,
   }
@@ -32,6 +38,10 @@ export default {
 
 .component-border {
   border: 1px solid #2C3E50;
+}
+
+.ms-1 {
+  margin-inline-start: 1em;
 }
 
 .me-1 {
