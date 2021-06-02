@@ -2,10 +2,10 @@
   <div id="app">
     <h1>Extending Vue.js Components</h1>
     <h2>Using mixins</h2>
-    <Mix></Mix>
+    <mix></mix>
     <h2>Using extends</h2>
-    <Parent param="param value 1"></Parent>
-    <ChildExtend param="param value 2"></ChildExtend>
+    <parent param="param value 1"></parent>
+    <child-extend param="param value 2"></child-extend>
     <h2>Higher-order components</h2>
     <button class="ms-1 me-1">Base button</button>
     <extended-button class="me-1">Extended Button with logger</extended-button>
