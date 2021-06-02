@@ -7,7 +7,7 @@
     <parent param="param value 1"></parent>
     <child-extend param="param value 2"></child-extend>
     <h2>Higher-order components</h2>
-    <button class="ms-1 me-1">Base button</button>
+    <base-button class="ms-1 me-1">Base button</base-button>
     <extended-button class="me-1">Extended Button with logger</extended-button>
   </div>
 </template>
@@ -15,10 +15,10 @@
 <script>
 import Parent from './components/Parent'
 import ChildExtend from "./components/ChildExtend";
-import Mix from "@/components/Mix";
+import Mix from "./components/Mix";
 
-import BaseButton from "@/components/BaseButton";
-import { withLoggerButton} from "@/withLoggerHOC";
+import BaseButton from "./components/BaseButton";
+import { withLoggerButton} from "./withLoggerHOC";
 const ExtendedButton = withLoggerButton(BaseButton);
 
 export default {
@@ -27,6 +27,7 @@ export default {
     Mix,
     ChildExtend,
     Parent,
+    BaseButton,
     ExtendedButton
   }
 }
