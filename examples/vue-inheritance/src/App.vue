@@ -1,14 +1,20 @@
 <template>
   <div id="app">
     <h1>Extending Vue.js Components</h1>
+
     <h2>Using mixins</h2>
     <mix></mix>
+
     <h2>Using extends</h2>
     <parent param="param value 1"></parent>
     <child-extend param="param value 2"></child-extend>
+
     <h2>Higher-order components</h2>
     <base-button class="ms-1 me-1">Base button</base-button>
     <extended-button class="me-1">Extended Button with logger</extended-button>
+
+    <h2>Composition API</h2>
+    <composition-example class="ms-1"></composition-example>
   </div>
 </template>
 
@@ -16,6 +22,7 @@
 import Parent from './components/Parent'
 import ChildExtend from "./components/ChildExtend";
 import Mix from "./components/Mix";
+import CompositionExample from "./components/CompositionExample";
 
 import BaseButton from "./components/BaseButton";
 import { withLoggerButton} from "./withLoggerHOC";
@@ -28,7 +35,8 @@ export default {
     ChildExtend,
     Parent,
     BaseButton,
-    ExtendedButton
+    ExtendedButton,
+    CompositionExample
   }
 }
 </script>
