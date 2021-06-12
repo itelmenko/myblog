@@ -1,5 +1,5 @@
 <template>
-<button v-on:click="increment"><slot/> [<span>{{ index }}]</span></button>
+  <button v-on:click="increment"><slot/> [<span>{{ index }}]</span></button>
 </template>
 <script>
 export default {

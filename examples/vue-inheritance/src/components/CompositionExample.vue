@@ -1,8 +1,8 @@
 <template>
   <div class="component-border pl-1 mb-1 ms-1">
-    <h1>
+    <h3>
       Example Composition API
-    </h1>
+    </h3>
     <div>
       <p>Count: {{ count }}</p>
       <p>

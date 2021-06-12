@@ -1,8 +1,8 @@
 <template>
   <div class="component-border pl-1 mb-1 ms-1">
-    <h1>
+    <h3>
       {{ title }}
-    </h1>
+    </h3>
     <div>
       <p>mixinData1: {{ mixinData1 }}</p>
       <p>mixinData2: {{ mixinData2 }}</p>
