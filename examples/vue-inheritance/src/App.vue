@@ -15,6 +15,9 @@
 
     <h2>Composition API</h2>
     <composition-example class="ms-1"></composition-example>
+
+    <h2>Scoped Slots and Renredless Component</h2>
+    <scoped-slot-example class="ms-1"></scoped-slot-example>
   </div>
 </template>
 
@@ -22,11 +25,13 @@
 import Parent from './components/Parent'
 import ChildExtend from "./components/ChildExtend";
 import Mix from "./components/Mix";
-import CompositionExample from "./components/CompositionExample";
 
 import BaseButton from "./components/BaseButton";
 import { withLoggerButton} from "./withLoggerHOC";
 const ExtendedButton = withLoggerButton(BaseButton);
+
+import CompositionExample from "./components/CompositionExample";
+import ScopedSlotExample from "./components/ScopedSlotExample";
 
 export default {
   name: 'App',
@@ -36,7 +41,8 @@ export default {
     Parent,
     BaseButton,
     ExtendedButton,
-    CompositionExample
+    CompositionExample,
+    ScopedSlotExample
   }
 }
 </script>
