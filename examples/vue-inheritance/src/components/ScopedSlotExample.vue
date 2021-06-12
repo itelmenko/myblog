@@ -3,7 +3,7 @@
     <h1>
       Scoped Slot Example
     </h1>
-    <counter-renderless v-slot="{ count, double, increment }">
+    <counter-renderless v-slot="{ count, increment }">
       <p>Count: {{ count }}</p>
       <p>
         <button @click="increment">Increment</button>
