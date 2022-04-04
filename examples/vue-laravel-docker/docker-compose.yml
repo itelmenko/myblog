@@ -12,7 +12,7 @@ services:
     working_dir: /var/www
     volumes:
       - ./backend:/var/www
-      - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+      - ./docker/backend/local.ini:/usr/local/etc/php/conf.d/local.ini
     depends_on:
       - db
 
