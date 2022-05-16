@@ -7,8 +7,7 @@ RUN apt-get update && apt-get install -y \
     unzip \
     curl
 
-# Change current user to www
+# Change current user
 USER node
 
-CMD ["bash", "-c", "npm install"]
-CMD ["bash", "-c", "npm run serve"]
+CMD ["sh", "-c", "npm install && npm run serve"]
