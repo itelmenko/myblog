@@ -7,12 +7,14 @@ services:
     build:
       context: .
       dockerfile: ./docker/backend/Dockerfile
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     restart: unless-stopped
     tty: true
     working_dir: /var/www
     volumes:
       - ./backend:/var/www
-      - ./docker/backend/local.ini:/usr/local/etc/php/conf.d/local.ini
+      - ./docker/backend/php.ini:/usr/local/etc/php/php.ini
     depends_on:
       - db
 
