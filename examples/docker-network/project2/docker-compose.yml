@@ -1,11 +1,11 @@
 version: '3.6'
 
 services:
-    backend:
+    web:
         image: nginx
         hostname: project2
         ports:
-            - "8082:80"
+            - "127.0.0.102:80:80"
         networks:
             some_network:
                 aliases:

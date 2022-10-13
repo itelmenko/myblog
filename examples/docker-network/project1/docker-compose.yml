@@ -1,11 +1,11 @@
 version: '3.6'
 
 services:
-    backend:
+    web:
         image: nginx
         hostname: project1
         ports:
-            - "8081:80"
+            - "127.0.0.101:80:80"
         networks:
             some_network:
                 aliases:
@@ -15,7 +15,4 @@ services:
 networks:
     some_network:
         # Общая сеть со смежными проектами
-        # https://docs.docker.com/compose/networking/#specify-custom-networks
-        # Networks can also be given a custom name (since version 3.5)
-        # Set a custom name for this network. The name field can be used to reference networks which contain special characters. The name is used as is and will not be scoped with the stack name.
         name: 'our_network'
