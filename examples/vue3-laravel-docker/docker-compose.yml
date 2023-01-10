@@ -1,0 +1,73 @@
+version: '3'
+services:
+
+  # Backend контейнер
+  backend:
+    # Для установки нужных пакетов используем не чистый образ, а инструкции из конкретного файла Dockerfile
+    build:
+      context: .
+      dockerfile: ./docker/backend/Dockerfile
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+    tty: true
+    working_dir: /var/www
+    volumes:
+      - .:/var/www # Монтируем локальную папку в контейнер как /var/www
+      - ./docker/backend/php.ini:/usr/local/etc/php/php.ini
+    depends_on:
+      - db
+
+  # Для сборки
+  nodejs:
+    build:
+      context: .
+      dockerfile: ./docker/nodejs/Dockerfile
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "5173:5173"
+    working_dir: /var/www
+    volumes:
+      - .:/var/www # Монтируем локальную папку в контейнер как /var/www
+
+  # Nginx контейнер для вебсервера
+  nginx:
+    # Используем готовый образ для nginx контейнера
+    image: nginx:alpine
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "80:80" # Внутренний порт контейнера пробрасываем на host машину
+    volumes:
+      - .:/var/www # Монтируем локальную папку в контейнер как /var/www
+      - ./docker/nginx/conf.d/:/etc/nginx/conf.d/ # Передаем в контейнер конфигурационные файлы nginx
+    depends_on:
+      - backend
+      - nodejs
+
+  # MySQL контейнер
+  db:
+    image: mysql:5.7.22
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3306:3306"
+    command: ['--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci','--default-authentication-plugin=mysql_native_password']
+    environment:
+      # Желаемые настройки для СУБД MySQL
+      MYSQL_DATABASE: laravel
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_USER: 'appuser'
+      MYSQL_PASSWORD: 'appuser'
+    volumes:
+      - dbdata:/var/lib/mysql # Используем именованный том из блока volumes
+      - ./docker/mysql/my.cnf:/etc/mysql/my.cnf # Передаем в контейнер конфигурационный файл
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping" ]
+
+# Тома
+volumes:
+  # Чтобы данные БД не пропадали после выключения создаем именованный том
+  dbdata:
+    driver: local
