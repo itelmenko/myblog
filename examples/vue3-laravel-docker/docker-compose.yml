@@ -1,4 +1,4 @@
-version: '3'
+version: '3.8'
 services:
 
   # Backend контейнер
@@ -18,19 +18,6 @@ services:
     depends_on:
       - db
 
-  # Для сборки
-  nodejs:
-    build:
-      context: .
-      dockerfile: ./docker/nodejs/Dockerfile
-    restart: unless-stopped
-    tty: true
-    ports:
-      - "5173:5173"
-    working_dir: /var/www
-    volumes:
-      - .:/var/www # Монтируем локальную папку в контейнер как /var/www
-
   # Nginx контейнер для вебсервера
   nginx:
     # Используем готовый образ для nginx контейнера
@@ -44,7 +31,6 @@ services:
       - ./docker/nginx/conf.d/:/etc/nginx/conf.d/ # Передаем в контейнер конфигурационные файлы nginx
     depends_on:
       - backend
-      - nodejs
 
   # MySQL контейнер
   db:
