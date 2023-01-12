@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y \
     vim \
     unzip \
     git \
-    curl \
+    curl && \
     pecl install xdebug-3.0.1 && \
     docker-php-ext-enable xdebug && \
     docker-php-ext-install pdo_mysql mbstring zip exif pcntl && \
