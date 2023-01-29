@@ -19,11 +19,7 @@ axios.defaults.withCredentials = true
 import {ref} from "vue";
 
 export default {
-    name: 'HelloWorld',
-
-    props: {
-        msg: String
-    },
+    name: 'Hello',
 
     setup() {
 
