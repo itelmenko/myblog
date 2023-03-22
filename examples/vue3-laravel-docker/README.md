@@ -14,6 +14,30 @@
 docker compose up -d
 ```
 
+Установить зависимости composer:
+
+```
+docker compose exec backend composer install
+```
+
+Создать .env:
+
+```
+cp .env.example .env
+```
+
+Сгенерировать ключ приложения:
+
+```
+docker compose exec backend php artisan key:generate
+```
+
+Выполнить миграции:
+
+```
+docker compose exec backend php artisan migrate
+```
+
 Открыть в браузере http://vue3-laravel-app.local
 
 Можно менять код на vue. Изменения будут отображаться в браузере
