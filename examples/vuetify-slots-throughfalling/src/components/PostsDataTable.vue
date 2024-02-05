@@ -6,7 +6,7 @@
       :sort-by="[ { key: 'id', order: 'asc' } ]"
   >
     <template v-slot:[`item.actions`]="{ item }">
-      <v-btn @click="handleDelete(item)">Удалить</v-btn>
+      <v-btn @click="handleDelete(item)">REMOVE</v-btn>
     </template>
   </my-data-table>
 </template>
@@ -41,6 +41,6 @@ async function apiDataRequest(optionsData) {
 }
 
 function handleDelete(item) {
-  alert(`DELETE ${item.id}`)
+  alert(`REMOVE ${item.id}`)
 }
 </script>
