@@ -4,7 +4,11 @@
       :api-data-request="apiDataRequest"
       :items-per-page="25"
       :sort-by="[ { key: 'id', order: 'asc' } ]"
-  ></my-data-table>
+  >
+    <template v-slot:[`item.actions`]="{ item }">
+      <v-btn @click="handleDelete(item)">Удалить</v-btn>
+    </template>
+  </my-data-table>
 </template>
 
 <script setup>
@@ -24,11 +28,19 @@ const headers = [
     sortable: true,
     key: 'title',
     width: '100%'
+  }, {
+    title: '',
+    align: 'center',
+    sortable: false,
+    key: 'actions',
   },
 ]
 
-async function apiDataRequest(optionsData)
-{
+async function apiDataRequest(optionsData) {
   return getPosts(optionsData)
+}
+
+function handleDelete(item) {
+  alert(`DELETE ${item.id}`)
 }
 </script>

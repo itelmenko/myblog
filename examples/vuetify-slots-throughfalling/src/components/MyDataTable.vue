@@ -9,7 +9,17 @@
       :loading="loading"
       item-value="id"
       @update:options="handleUpdateOptions"
-  ></v-data-table-server>
+  >
+    <template
+        v-for="(slot, name) in $slots"
+        v-slot:[name]="item"
+    >
+      <slot
+          :name="name"
+          v-bind="item"
+      ></slot>
+    </template>
+  </v-data-table-server>
 </template>
 
 <script setup>
