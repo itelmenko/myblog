@@ -6,38 +6,38 @@
   border-radius: 5px;
   overflow: hidden;
   align-items: center;
-}
 
-.text-input-prepend-icon {
-  padding-inline-start: 0.5rem;
-  padding-inline-end: 0.5rem;
-}
-
-.text-input-container:focus-within {
-  border-color: var(--primary-color);
-  .text-input-prepend-icon {
-    color: var(--primary-color);
+  .icon {
+    padding-inline-start: 0.5rem;
+    padding-inline-end: 0.5rem;
   }
-}
 
-.text-input-field {
-  border: 0;
-  padding: 0.5rem;
-  flex: 1;
-
-  &:focus, &:focus-visible {
-    outline: none;
+  &:focus-within {
+    border-color: var(--primary-color);
+    .icon {
+      color: var(--primary-color);
+    }
   }
-}
 
-.text-input-append-button {
-  background: var(--primary-color);
-  border: 0;
-  color: white;
-  padding: 0.5rem;
-  border-radius: 0;
-  cursor: pointer;
-  &:active {
-    background: #004D40;
+  input.field {
+    border: 0;
+    padding: 0.5rem;
+    flex: 1;
+
+    &:focus, &:focus-visible {
+      outline: none;
+    }
+  }
+
+  .button {
+    background: var(--primary-color);
+    border: 0;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 0;
+    cursor: pointer;
+    &:active {
+      background: #004D40;
+    }
   }
 }
