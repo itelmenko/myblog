@@ -7,6 +7,10 @@
   align-items: center;
 }
 
+.text-input-container:focus-within {
+  border-color: #00695C;
+}
+
 .text-input-prepend-icon {
   padding-inline-start: 0.5rem;
   padding-inline-end: 0.5rem;
