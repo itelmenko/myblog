@@ -1,0 +1,35 @@
+.text-input-container {
+  display: inline-flex;
+  flex: 1 1 300px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+  align-items: center;
+}
+
+.text-input-prepend-icon {
+  padding-inline-start: 0.5rem;
+  padding-inline-end: 0.5rem;
+}
+
+.text-input-field {
+  border: 0;
+  padding: 0.5rem;
+  flex: 1;
+
+  &:focus, &:focus-visible {
+    outline: none;
+  }
+}
+
+.text-input-append-button {
+  background: #00695C;
+  border: 0;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 0;
+  cursor: pointer;
+  &:active {
+    background: #004D40;
+  }
+}
