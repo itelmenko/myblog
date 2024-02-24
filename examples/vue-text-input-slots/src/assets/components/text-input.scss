@@ -1,4 +1,5 @@
 .text-input-container {
+  --primary-color: #00695C;
   display: inline-flex;
   flex: 1 1 300px;
   border: 1px solid #ccc;
@@ -7,13 +8,16 @@
   align-items: center;
 }
 
-.text-input-container:focus-within {
-  border-color: #00695C;
-}
-
 .text-input-prepend-icon {
   padding-inline-start: 0.5rem;
   padding-inline-end: 0.5rem;
+}
+
+.text-input-container:focus-within {
+  border-color: var(--primary-color);
+  .text-input-prepend-icon {
+    color: var(--primary-color);
+  }
 }
 
 .text-input-field {
@@ -27,7 +31,7 @@
 }
 
 .text-input-append-button {
-  background: #00695C;
+  background: var(--primary-color);
   border: 0;
   color: white;
   padding: 0.5rem;
