@@ -3,7 +3,7 @@
 <template>
   <div class="text-input-container">
     <slot name="prepend"></slot>
-    <input type="search" name="search" class="field"/>
+    <input type="text" name="search" class="field"/>
     <slot name="append"></slot>
   </div>
 </template>
