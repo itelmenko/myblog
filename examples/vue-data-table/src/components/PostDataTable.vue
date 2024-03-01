@@ -22,17 +22,20 @@
     <tfoot>
       <tr>
         <td :colspan="headers.length">
-          <button
-              :disabled="options.page === 1"
-              @click="prevPage">
-            Previous
-          </button>
-          Page # {{options.page}} from {{pageCount}}
-          <button
-              :disabled="options.page >= pageCount"
-              @click="nextPage">
-            Next
-          </button>
+          <div class="table-footer-content">
+            <button class="icon-btn"
+                :disabled="options.page === 1"
+                @click="prevPage">
+              <svg-icon type="mdi" :path="previousIcon"></svg-icon>
+            </button>
+            page #{{options.page}} from {{pageCount}}
+            <button
+                class="icon-btn"
+                :disabled="options.page >= pageCount"
+                @click="nextPage">
+              <svg-icon type="mdi" :path="nextIcon"></svg-icon>
+            </button>
+          </div>
         </td>
       </tr>
     </tfoot>
@@ -42,6 +45,8 @@
 <script setup>
 import { getPosts } from '@/api/posts.js'
 import {computed, onMounted, reactive, ref} from 'vue'
+import SvgIcon from '@jamescoyle/vue-icon';
+import { mdiArrowLeft as previousIcon, mdiArrowRight as nextIcon } from '@mdi/js';
 
 const serverItems = ref([])
 const loading = ref(true)
@@ -142,5 +147,15 @@ table th {
   position: absolute;
   left: 0;
   bottom: 0;
+}
+.icon-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+.table-footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: right;
 }
 </style>
