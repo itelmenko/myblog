@@ -10,15 +10,15 @@
             {{ field.title }}
           </th>
         </tr>
+        <tr v-if="loading" class="data-datatable-progress">
+          <td :colspan="headers.length">
+            <div class="progress-bar">
+              <div class="progress-bar-value"></div>
+            </div>
+          </td>
+        </tr>
       </thead>
       <tbody>
-      <tr v-if="!loading">
-        <td :colspan="headers.length">
-          <div class="progress-bar">
-            <div class="progress-bar-value"></div>
-          </div>
-        </td>
-      </tr>
       <tr v-for="item in serverItems" :key="item" :class="{ 'data-loading': loading }">
         <td v-for="field in headers" :key="field.key">{{ item[field.key] }}</td>
       </tr>
@@ -139,5 +139,15 @@ table th {
   text-align: center;
   /*background-color: #0db6d8;
   color: white;*/
+}
+.data-datatable-progress td {
+  padding: 0;
+  position: relative;
+  border: none;
+}
+.progress-bar {
+  position: absolute;
+  left: 0;
+  bottom: 0;
 }
 </style>
