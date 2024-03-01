@@ -2,8 +2,12 @@
   <table>
     <thead>
       <tr :class="{ 'data-loading': loading }">
-        <th v-for="field in headers" :key="field" :style="{ width: field.width, minWidth: field.width }">
+        <th v-for="field in headers" :key="field.key" :style="{ width: field.width, minWidth: field.width }" :class="{ 'table-th-sortable': field.sortable }" @click="toggleSort(field)">
           {{ field.title }}
+          <template v-if="options.sortBy === field.key">
+            <svg-icon type="mdi" class="icon" v-if="options.sortDir === 'asc'" :path="ascSortIcon"></svg-icon>
+            <svg-icon type="mdi" class="icon" v-if="options.sortDir === 'desc'" :path="descSortIcon"></svg-icon>
+          </template>
         </th>
       </tr>
       <tr v-if="loading" class="data-datatable-progress">
@@ -46,7 +50,7 @@
 import { getPosts } from '@/api/posts.js'
 import {computed, onMounted, reactive, ref} from 'vue'
 import SvgIcon from '@jamescoyle/vue-icon';
-import { mdiArrowLeft as previousIcon, mdiArrowRight as nextIcon } from '@mdi/js';
+import { mdiArrowLeft as previousIcon, mdiArrowRight as nextIcon, mdiArrowDown as ascSortIcon, mdiArrowUp as descSortIcon } from '@mdi/js';
 
 const serverItems = ref([])
 const loading = ref(true)
@@ -72,7 +76,8 @@ const headers = [
 const defaults = {
   page: 1,
   itemsPerPage: 10,
-  sortBy: 'id'
+  sortBy: 'id',
+  sortDir: 'asc'
 }
 
 const options = reactive(defaults)
@@ -89,15 +94,33 @@ function prevPage() {
   loadData()
 }
 
+function toggleSort(filed) {
+  if (!filed.sortable) {
+    return;
+  }
+  const filedName = filed.key
+  if (options.sortBy === filedName) {
+    if (options.sortDir === 'asc') {
+      options.sortDir = 'desc';
+    } else {
+      options.sortBy = null;
+    }
+  } else {
+    options.sortBy = filedName;
+    options.sortDir = 'asc';
+  }
+  loadData();
+}
+
 function covertOptionsToQueryParams(opts) {
   const result = {
     _limit: opts.itemsPerPage,
     _page: opts.page
   }
 
-  if (opts.sortBy.length) {
-    result._sort = opts.sortBy[0].key
-    result._order = opts.sortBy[0].order ? opts.sortBy[0].order : 'asc'
+  if (opts.sortBy) {
+    result._sort = opts.sortBy
+    result._order = opts.sortDir ? opts.sortDir : 'asc'
   }
 
   return result
@@ -157,5 +180,11 @@ table th {
   display: flex;
   align-items: center;
   justify-content: right;
+}
+.table-th-sortable {
+  cursor: pointer;
+}
+.table-th-sortable .icon {
+  vertical-align: middle;
 }
 </style>
