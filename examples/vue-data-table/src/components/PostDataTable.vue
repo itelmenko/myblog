@@ -2,7 +2,7 @@
   <table>
     <thead>
       <tr :class="{ 'data-loading': loading }">
-        <th v-for="field in headers" :key="field">
+        <th v-for="field in headers" :key="field" :style="{ width: field.width, minWidth: field.width }">
           {{ field.title }}
         </th>
       </tr>
@@ -53,7 +53,7 @@ const headers = [
     align: 'end',
     sortable: true,
     key: 'id',
-    width: '7em'
+    width: '5em'
   },
   {
     title: 'Title',
