@@ -20,7 +20,7 @@
     </thead>
     <tbody>
     <tr v-for="item in serverItems" :key="item" :class="{ 'data-loading': loading }">
-      <td v-for="field in headers" :key="field.key">{{ item[field.key] }}</td>
+      <td v-for="field in headers" :key="field.key" :style="{ textAlign: field.align }">{{ item[field.key] }}</td>
     </tr>
     </tbody>
     <tfoot>
