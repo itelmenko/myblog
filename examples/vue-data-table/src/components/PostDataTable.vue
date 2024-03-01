@@ -1,47 +1,42 @@
 <template>
-  <div>
-<!--    options.page = {{ options.page }}; totalItems = {{totalItems}}; loading = {{loading}}; serverItems.length: {{serverItems.length}};
-    pageCount = {{ pageCount }}-->
-
-    <table>
-      <thead>
-        <tr :class="{ 'data-loading': loading }">
-          <th v-for="field in headers" :key="field">
-            {{ field.title }}
-          </th>
-        </tr>
-        <tr v-if="loading" class="data-datatable-progress">
-          <td :colspan="headers.length">
-            <div class="progress-bar">
-              <div class="progress-bar-value"></div>
-            </div>
-          </td>
-        </tr>
-      </thead>
-      <tbody>
-      <tr v-for="item in serverItems" :key="item" :class="{ 'data-loading': loading }">
-        <td v-for="field in headers" :key="field.key">{{ item[field.key] }}</td>
+  <table>
+    <thead>
+      <tr :class="{ 'data-loading': loading }">
+        <th v-for="field in headers" :key="field">
+          {{ field.title }}
+        </th>
       </tr>
-      </tbody>
-      <tfoot>
-        <tr>
-          <td :colspan="headers.length">
-            <button
-                :disabled="options.page === 1"
-                @click="prevPage">
-              Previous
-            </button>
-            Page # {{options.page}} from {{pageCount}}
-            <button
-                :disabled="options.page >= pageCount"
-                @click="nextPage">
-              Next
-            </button>
-          </td>
-        </tr>
-      </tfoot>
-    </table>
-  </div>
+      <tr v-if="loading" class="data-datatable-progress">
+        <td :colspan="headers.length">
+          <div class="progress-bar">
+            <div class="progress-bar-value"></div>
+          </div>
+        </td>
+      </tr>
+    </thead>
+    <tbody>
+    <tr v-for="item in serverItems" :key="item" :class="{ 'data-loading': loading }">
+      <td v-for="field in headers" :key="field.key">{{ item[field.key] }}</td>
+    </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td :colspan="headers.length">
+          <button
+              :disabled="options.page === 1"
+              @click="prevPage">
+            Previous
+          </button>
+          Page # {{options.page}} from {{pageCount}}
+          <button
+              :disabled="options.page >= pageCount"
+              @click="nextPage">
+            Next
+          </button>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
 </template>
 
 <script setup>
@@ -137,8 +132,6 @@ table th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: center;
-  /*background-color: #0db6d8;
-  color: white;*/
 }
 .data-datatable-progress td {
   padding: 0;
