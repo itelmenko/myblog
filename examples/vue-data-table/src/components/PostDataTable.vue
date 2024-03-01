@@ -1,8 +1,8 @@
 <template>
-  <table>
+  <table class="data-table">
     <thead>
-      <tr :class="{ 'data-loading': loading }">
-        <th v-for="field in headers" :key="field.key" :style="{ width: field.width, minWidth: field.width }" :class="{ 'table-th-sortable': field.sortable }" @click="toggleSort(field)">
+      <tr :class="{ 'data-table__row_loading': loading }">
+        <th v-for="field in headers" :key="field.key" :style="{ width: field.width, minWidth: field.width }" :class="{ 'data-table__th-sortable': field.sortable }" @click="toggleSort(field)">
           {{ field.title }}
           <template v-if="options.sortBy === field.key">
             <svg-icon type="mdi" class="icon" v-if="options.sortDir === 'asc'" :path="ascSortIcon"></svg-icon>
@@ -10,23 +10,23 @@
           </template>
         </th>
       </tr>
-      <tr v-if="loading" class="data-datatable-progress">
+      <tr v-if="loading" class="data-datatable__progress">
         <td :colspan="headers.length">
           <div class="progress-bar">
-            <div class="progress-bar-value"></div>
+            <div class="progress-bar__value"></div>
           </div>
         </td>
       </tr>
     </thead>
     <tbody>
-    <tr v-for="item in serverItems" :key="item" :class="{ 'data-loading': loading }">
+    <tr v-for="item in serverItems" :key="item" :class="{ 'data-table__row_loading': loading }">
       <td v-for="field in headers" :key="field.key" :style="{ textAlign: field.align }">{{ item[field.key] }}</td>
     </tr>
     </tbody>
     <tfoot>
       <tr>
         <td :colspan="headers.length">
-          <div class="table-footer-content">
+          <div class="data-table__footer-content">
             <button class="icon-btn"
                 :disabled="options.page === 1"
                 @click="prevPage">
@@ -140,51 +140,53 @@ onMounted(loadData)
 </script>
 
 <style>
-table {
+.data-table {
   width: 100%;
   border-collapse: collapse;
 }
-.data-loading {
-  opacity: 0.5;
-}
-table td, table th {
+
+.data-table td, .data-table th {
   border: 1px solid #ddd;
   padding: 8px;
 }
 
-table tbody tr:nth-child(even){background-color: #f2f2f2;}
+.data-table tbody tr:nth-child(even){background-color: #f2f2f2;}
 
-table tbody tr:hover {background-color: #ddd;}
+.data-table tbody tr:hover {background-color: #ddd;}
 
-table th {
+.data-table th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: center;
 }
-.data-datatable-progress td {
+
+.data-table__row_loading {
+  opacity: 0.5;
+}
+
+.data-datatable__progress td {
   padding: 0;
   position: relative;
   border: none;
 }
-.progress-bar {
+
+.data-datatable__progress .progress-bar {
   position: absolute;
   left: 0;
   bottom: 0;
 }
-.icon-btn {
-  border: none;
-  background: transparent;
-  cursor: pointer;
-}
-.table-footer-content {
+
+.data-table__footer-content {
   display: flex;
   align-items: center;
   justify-content: right;
 }
-.table-th-sortable {
+
+.data-table__th-sortable {
   cursor: pointer;
 }
-.table-th-sortable .icon {
+
+.data-table__th-sortable .icon {
   vertical-align: middle;
 }
 </style>
