@@ -1,5 +1,5 @@
 <template>
-  <h1>Hello world</h1>
+  <h1>Vue3 DataTable</h1>
   <PostDataTable></PostDataTable>
 </template>
 <script setup>

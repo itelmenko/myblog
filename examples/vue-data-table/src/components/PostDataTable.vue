@@ -1,28 +1,26 @@
 <template>
   <div>
-    options.page = {{ options.page }}; totalItems = {{totalItems}}; loading = {{loading}}; serverItems.length: {{serverItems.length}};
-    pageCount = {{ pageCount }}
+<!--    options.page = {{ options.page }}; totalItems = {{totalItems}}; loading = {{loading}}; serverItems.length: {{serverItems.length}};
+    pageCount = {{ pageCount }}-->
 
     <table>
       <thead>
-        <tr v-if="!loading">
+        <tr :class="{ 'data-loading': loading }">
           <th v-for="field in headers" :key="field">
             {{ field.title }}
           </th>
         </tr>
       </thead>
       <tbody>
-      <template v-if="!loading">
-        <tr v-for="item in serverItems" :key="item">
-          <td v-for="field in headers" :key="field.key">{{ item[field.key] }}</td>
-        </tr>
-      </template>
-      <tr v-if="loading">
-        <td>
+      <tr v-if="!loading">
+        <td :colspan="headers.length">
           <div class="progress-bar">
             <div class="progress-bar-value"></div>
           </div>
         </td>
+      </tr>
+      <tr v-for="item in serverItems" :key="item" :class="{ 'data-loading': loading }">
+        <td v-for="field in headers" :key="field.key">{{ item[field.key] }}</td>
       </tr>
       </tbody>
       <tfoot>
@@ -69,12 +67,6 @@ const headers = [
     key: 'title',
     width: '100%'
   },
-  {
-    title: '',
-    align: 'center',
-    sortable: false,
-    key: 'actions'
-  }
 ]
 
 const defaults = {
@@ -127,5 +119,25 @@ onMounted(loadData)
 <style>
 table {
   width: 100%;
+  border-collapse: collapse;
+}
+.data-loading {
+  opacity: 0.5;
+}
+table td, table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+table tbody tr:nth-child(even){background-color: #f2f2f2;}
+
+table tbody tr:hover {background-color: #ddd;}
+
+table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  /*background-color: #0db6d8;
+  color: white;*/
 }
 </style>
