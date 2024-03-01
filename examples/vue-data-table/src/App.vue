@@ -3,5 +3,5 @@
   <PostDataTable></PostDataTable>
 </template>
 <script setup>
-import PostDataTable from "@/components/PostDataTable.vue";
+import PostDataTable from '@/components/PostDataTable.vue'
 </script>
