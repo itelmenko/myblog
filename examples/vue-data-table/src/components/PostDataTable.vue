@@ -2,7 +2,7 @@
   <table class="data-table">
     <thead>
       <tr :class="{ 'data-table__row_loading': loading }">
-        <th v-for="field in headers" :key="field.key" :style="{ width: field.width, minWidth: field.width }" :class="{ 'data-table__th-sortable': field.sortable }" @click="toggleSort(field)">
+        <th v-for="field in headers" :key="field.key" :style="{ width: field.width, minWidth: field.width }" :class="{ 'data-table__th-sortable': field.sortable }" @click="handleToggleSortAction(field)">
           {{ field.title }}
           <template v-if="options.sortBy === field.key">
             <svg-icon type="mdi" class="icon" v-if="options.sortDir === 'asc'" :path="ascSortIcon"></svg-icon>
@@ -19,7 +19,7 @@
       </tr>
     </thead>
     <tbody>
-    <tr v-for="item in serverItems" :key="item" :class="{ 'data-table__row_loading': loading }">
+    <tr v-for="item in pageItems" :key="item" :class="{ 'data-table__row_loading': loading }">
       <td v-for="field in headers" :key="field.key" :style="{ textAlign: field.align }">{{ item[field.key] }}</td>
     </tr>
     </tbody>
@@ -29,14 +29,14 @@
           <div class="data-table__footer-content">
             <button class="icon-btn"
                 :disabled="options.page === 1"
-                @click="prevPage">
+                @click="handlePreviousPageAction">
               <svg-icon type="mdi" :path="previousIcon"></svg-icon>
             </button>
-            page #{{options.page}} from {{pageCount}}
+            page #{{options.page}} from {{pagesCount}}
             <button
                 class="icon-btn"
-                :disabled="options.page >= pageCount"
-                @click="nextPage">
+                :disabled="options.page >= pagesCount"
+                @click="handleNextPageAction">
               <svg-icon type="mdi" :path="nextIcon"></svg-icon>
             </button>
           </div>
@@ -51,10 +51,11 @@ import { getPosts } from '@/api/posts.js'
 import {computed, onMounted, reactive, ref} from 'vue'
 import SvgIcon from '@jamescoyle/vue-icon';
 import { mdiArrowLeft as previousIcon, mdiArrowRight as nextIcon, mdiArrowDown as ascSortIcon, mdiArrowUp as descSortIcon } from '@mdi/js';
+import { covertDataTableOptionsToQueryParams } from "@/api/helpers.js";
 
-const serverItems = ref([])
+const pageItems = ref([])
 const loading = ref(true)
-const totalItems = ref(0)
+const totalItemsCount = ref(0)
 
 const headers = [
   {
@@ -73,31 +74,30 @@ const headers = [
   },
 ]
 
-const defaults = {
+const options = reactive({
   page: 1,
   itemsPerPage: 10,
   sortBy: 'id',
   sortDir: 'asc'
-}
+})
 
-const options = reactive(defaults)
+const pagesCount = computed(() => Math.ceil(totalItemsCount.value/options.itemsPerPage));
 
-const pageCount = computed(() => Math.ceil(totalItems.value/options.itemsPerPage));
-
-function nextPage(){
+function handleNextPageAction(){
   options.page ++;
   loadData()
 }
 
-function prevPage() {
+function handlePreviousPageAction() {
   options.page --;
   loadData()
 }
 
-function toggleSort(filed) {
+function handleToggleSortAction(filed) {
   if (!filed.sortable) {
     return;
   }
+
   const filedName = filed.key
   if (options.sortBy === filedName) {
     if (options.sortDir === 'asc') {
@@ -109,30 +109,18 @@ function toggleSort(filed) {
     options.sortBy = filedName;
     options.sortDir = 'asc';
   }
+
   loadData();
-}
-
-function covertOptionsToQueryParams(opts) {
-  const result = {
-    _limit: opts.itemsPerPage,
-    _page: opts.page
-  }
-
-  if (opts.sortBy) {
-    result._sort = opts.sortBy
-    result._order = opts.sortDir ? opts.sortDir : 'asc'
-  }
-
-  return result
 }
 
 async function loadData() {
   loading.value = true
-  const params = covertOptionsToQueryParams(options)
+  const params = covertDataTableOptionsToQueryParams(options)
 
   const data = await getPosts(params)
-  serverItems.value = data.data
-  totalItems.value = data.headers['x-total-count']
+  pageItems.value = data.data
+  totalItemsCount.value = data.headers['x-total-count']
+
   loading.value = false
 }
 
