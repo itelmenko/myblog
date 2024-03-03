@@ -11,3 +11,7 @@ export function covertDataTableOptionsToQueryParams(opts) {
 
   return result
 }
+
+export function convertApiResponceToDataTableOptions(data) {
+  return { items: data.data, total: data.headers['x-total-count'] }
+}

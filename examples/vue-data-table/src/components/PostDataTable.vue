@@ -77,7 +77,7 @@ import {
   mdiArrowDown as ascSortIcon,
   mdiArrowUp as descSortIcon
 } from '@mdi/js'
-import { covertDataTableOptionsToQueryParams } from '@/api/helpers.js'
+import { covertDataTableOptionsToQueryParams, convertApiResponceToDataTableOptions } from '@/api/helpers.js'
 
 const pageItems = ref([])
 const loading = ref(true)
@@ -141,11 +141,11 @@ function handleToggleSortAction(filed) {
 
 async function loadData() {
   loading.value = true
-  const params = covertDataTableOptionsToQueryParams(options)
 
-  const data = await getPosts(params)
-  pageItems.value = data.data
-  totalItemsCount.value = data.headers['x-total-count']
+  const params = covertDataTableOptionsToQueryParams(options)
+  const data = convertApiResponceToDataTableOptions(await getPosts(params))
+  pageItems.value = data.items
+  totalItemsCount.value = data.total
 
   loading.value = false
 }
