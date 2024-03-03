@@ -1,3 +1,4 @@
+// Преобразование данных компонента в параметры API
 export function covertDataTableOptionsToQueryParams(opts) {
   const result = {
     _limit: opts.itemsPerPage,
@@ -12,6 +13,7 @@ export function covertDataTableOptionsToQueryParams(opts) {
   return result
 }
 
+// Преобразование результата API в данные для компонента
 export function convertApiResponceToDataTableOptions(data) {
   return { items: data.data, total: data.headers['x-total-count'] }
 }
