@@ -2,6 +2,7 @@
   <table class="data-table">
     <thead>
       <tr :class="{ 'data-table__row_loading': loading }">
+        <!-- Создание заголовка для каждой колонки  -->
         <th
           v-for="field in headers"
           :key="field.key"
@@ -9,7 +10,9 @@
           :class="{ 'data-table__th-sortable': field.sortable }"
           @click="handleToggleSortAction(field)"
         >
+          <!-- Текст в заголовке с название столбца -->
           {{ field.title }}
+          <!-- Пиктограмма-стрелка для отображения направления сортировки -->
           <template v-if="options.sortBy === field.key">
             <svg-icon
               type="mdi"
@@ -26,6 +29,7 @@
           </template>
         </th>
       </tr>
+      <!-- Отображение анимации загрузки -->
       <tr v-if="loading" class="data-datatable__progress">
         <td :colspan="headers.length">
           <div class="progress-bar">
@@ -35,8 +39,11 @@
       </tr>
     </thead>
     <tbody>
+      <!-- Создание строки для каждой записи данных  -->
       <tr v-for="item in pageItems" :key="item" :class="{ 'data-table__row_loading': loading }">
+        <!-- Создание ячейки с данными в каждой строке -->
         <td v-for="field in headers" :key="field.key" :style="{ textAlign: field.align }">
+          <!-- Содержимое ячейки -->
           {{ item[field.key] }}
         </td>
       </tr>
@@ -45,6 +52,7 @@
       <tr>
         <td :colspan="headers.length">
           <div class="data-table__footer-content">
+            <!-- Кнопка перехода на предыдущую страницу -->
             <button
               class="icon-btn"
               :disabled="options.page === 1"
@@ -53,6 +61,7 @@
               <svg-icon type="mdi" :path="previousIcon"></svg-icon>
             </button>
             page #{{ options.page }} from {{ pagesCount }}
+            <!-- Кнопка перехода на следующую страницу -->
             <button
               class="icon-btn"
               :disabled="options.page >= pagesCount"
@@ -77,12 +86,21 @@ import {
   mdiArrowDown as ascSortIcon,
   mdiArrowUp as descSortIcon
 } from '@mdi/js'
-import { covertDataTableOptionsToQueryParams, convertApiResponceToDataTableOptions } from '@/api/helpers.js'
+import {
+  covertDataTableOptionsToQueryParams,
+  convertApiResponceToDataTableOptions
+} from '@/api/helpers.js'
 
+// Строки текущей страницы
 const pageItems = ref([])
+// Флаг активности процесса загрузки данных
 const loading = ref(true)
+// Общее число строк на сервере
 const totalItemsCount = ref(0)
 
+/**
+ * Настройки колонок
+ */
 const headers = [
   {
     title: 'ID',
@@ -101,29 +119,36 @@ const headers = [
 ]
 
 const options = reactive({
-  page: 1,
-  itemsPerPage: 10,
-  sortBy: 'id',
-  sortDir: 'asc'
+  page: 1, // Номер страницы
+  itemsPerPage: 10, // Число строк на страницу
+  sortBy: 'id', // Имя столбца для сортировки
+  sortDir: 'asc' // Порядок сортировки
 })
 
+// Число страниц
 const pagesCount = computed(() => Math.ceil(totalItemsCount.value / options.itemsPerPage))
 
+// Обработка нажатия кнопки перехода на следующую страницу
 function handleNextPageAction() {
   options.page++
   loadData()
 }
 
+// Обработка нажатия кнопки перехода на предыдущую страницу
 function handlePreviousPageAction() {
   options.page--
   loadData()
 }
 
+// Обработка нажатия заголовка столбца для сортировки
 function handleToggleSortAction(filed) {
   if (!filed.sortable) {
     return
   }
 
+  /**
+   * 3 режима сортировки: возрастание, убывание и отсутствие сортировки
+   */
   const filedName = filed.key
   if (options.sortBy === filedName) {
     if (options.sortDir === 'asc') {
@@ -139,6 +164,7 @@ function handleToggleSortAction(filed) {
   loadData()
 }
 
+// Загрузка данных для текущей страницы с сервера
 async function loadData() {
   loading.value = true
 
