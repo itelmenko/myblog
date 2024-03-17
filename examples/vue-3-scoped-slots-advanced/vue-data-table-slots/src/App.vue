@@ -1,5 +1,5 @@
 <template>
-  <h1>Vue3 DataTable</h1>
+  <h1>Vue3 DataTable with Slots</h1>
   <PostDataTable></PostDataTable>
 </template>
 <script setup>

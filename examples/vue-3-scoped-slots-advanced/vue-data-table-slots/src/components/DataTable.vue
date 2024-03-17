@@ -43,8 +43,12 @@
       <tr v-for="item in pageItems" :key="item" :class="{ 'data-table__row_loading': loading }">
         <!-- Создание ячейки с данными в каждой строке -->
         <td v-for="field in headers" :key="field.key" :style="{ textAlign: field.align }">
-          <!-- Содержимое ячейки -->
-          {{ item[field.key] }}
+          <!-- Содержимое ячейки. Можно менять при помощи слота с именем item.ИМЯ_ПОЛЯ -->
+          <!-- Внешнему компоненту передается строка с данными в свойстве row -->
+          <slot :name="`item.${field.key}`" :row="item">
+            <!-- Если слот не используется, то выводится- как есть -->
+            {{ item[field.key] }}
+          </slot>
         </td>
       </tr>
     </tbody>

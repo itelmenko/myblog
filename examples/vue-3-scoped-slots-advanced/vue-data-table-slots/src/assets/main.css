@@ -33,3 +33,17 @@ a,
   background: transparent;
   cursor: pointer;
 }
+
+.icons-group {
+  display: flex;
+}
+
+.alert {
+  color: orangered;
+}
+
+.info {
+  color: dodgerblue;
+}
+
+
