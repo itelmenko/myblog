@@ -1,5 +1,5 @@
 <template>
-  <ParentBlock class="grand-block">
+  <ParentBlock class="grand-block-style">
     <slot />
   </ParentBlock>
 </template>
@@ -8,7 +8,7 @@ import ParentBlock from "@/components/nested-components-with-styles/ParentBlock.
 </script>
 
 <style>
-.grand-block {
+.grand-block-style {
   background-color: coral;
   color: white;
 }

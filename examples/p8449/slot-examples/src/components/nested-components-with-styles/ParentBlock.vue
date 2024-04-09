@@ -1,5 +1,5 @@
 <template>
-  <ChildBlock class="parent-block">
+  <ChildBlock class="parent-block-style">
     <slot />
   </ChildBlock>
 </template>
@@ -8,7 +8,7 @@ import ChildBlock from "@/components/nested-components-with-styles/ChildBlock.vu
 </script>
 
 <style>
-.parent-block {
+.parent-block-style {
   background-color: lightcoral;
   border: 1px dashed darkslategray;
 }

@@ -6,7 +6,8 @@ import { RouterLink, RouterView } from 'vue-router'
   <header>
     <nav>
       <RouterLink to="/">Home</RouterLink>
-      <RouterLink to="/nested-components">Nested Components</RouterLink>
+      <RouterLink to="/nested-components-with-styles">Nested With Styles</RouterLink>
+      <RouterLink to="/nested-components-with-props">Nested With Props</RouterLink>
       <RouterLink to="/about">About</RouterLink>
     </nav>
   </header>

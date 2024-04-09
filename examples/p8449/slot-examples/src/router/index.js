@@ -18,9 +18,14 @@ const router = createRouter({
       component: () => import('../views/AboutView.vue')
     },
     {
-      path: '/nested-components',
-      name: 'nested-components',
-      component: () => import('../views/NestedComponentsView.vue')
+      path: '/nested-components-with-styles',
+      name: 'nested-with-styles',
+      component: () => import('../views/NestedComponentsWithStylesView.vue')
+    },
+    {
+      path: '/nested-components-with-props',
+      name: 'nested-with-props',
+      component: () => import('../views/NestedComponentsWithPropsView.vue')
     }
   ]
 })

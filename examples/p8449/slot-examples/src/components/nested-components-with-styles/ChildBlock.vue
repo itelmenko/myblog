@@ -1,11 +1,11 @@
 <template>
-  <div class="child-block">
+  <div class="child-block-style">
     <slot />
   </div>
 </template>
 
 <style>
-.child-block {
+.child-block-style {
   margin: 7px;
   padding: 7px;
   border-radius: 5px;
