@@ -1,5 +1,10 @@
 <template>
-  <ChildBlock class="parent-block-with-props" borderStyle="1px dashed darkslategray" backgroundColorStyle="lightcoral" :style="{ color: props.textColorStyle }">
+  <ChildBlock
+    class="parent-block-with-props"
+    borderStyle="1px dashed darkslategray"
+    backgroundColorStyle="lightcoral"
+    :style="{ color: props.textColorStyle }"
+  >
     <slot />
   </ChildBlock>
 </template>
@@ -13,4 +18,3 @@ const props = defineProps({
   }
 });
 </script>
-

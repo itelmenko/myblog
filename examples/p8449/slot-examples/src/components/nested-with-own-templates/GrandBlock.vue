@@ -1,7 +1,12 @@
 <template>
   <div class="grand-block-with-own-template">
     <div>Grand Content</div>
-    <ParentBlock class="grand-block-with-props" backgroundColorStyle="orange" textColorStyle="white" v-bind="$attrs">
+    <ParentBlock
+      class="grand-block-with-props"
+      backgroundColorStyle="orange"
+      textColorStyle="white"
+      v-bind="$attrs"
+    >
       <slot />
     </ParentBlock>
   </div>

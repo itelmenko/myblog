@@ -1,5 +1,8 @@
 <template>
-  <div class="child-block-with-own-template" :style="{ backgroundColor: props.backgroundColorStyle, border: props.borderStyle }">
+  <div
+    class="child-block-with-own-template"
+    :style="{ backgroundColor: props.backgroundColorStyle, border: props.borderStyle }"
+  >
     <div>Child Content</div>
     <slot />
   </div>

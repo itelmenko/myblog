@@ -1,5 +1,8 @@
 <template>
-  <div class="child-block-with-props" :style="{ backgroundColor: props.backgroundColorStyle, border: props.borderStyle } ">
+  <div
+    class="child-block-with-props"
+    :style="{ backgroundColor: props.backgroundColorStyle, border: props.borderStyle }"
+  >
     <slot />
   </div>
 </template>
@@ -24,4 +27,3 @@ const props = defineProps({
   border-radius: 5px;
 }
 </style>
-

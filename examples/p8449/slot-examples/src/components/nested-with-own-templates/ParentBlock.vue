@@ -1,7 +1,12 @@
 <template>
   <div class="parent-block-with-own-template">
     <div>Parent Content</div>
-    <ChildBlock borderStyle="1px dashed darkslategray" backgroundColorStyle="lightcoral" :style="{ color: props.textColorStyle }" v-bind="$attrs">
+    <ChildBlock
+      borderStyle="1px dashed darkslategray"
+      backgroundColorStyle="lightcoral"
+      :style="{ color: props.textColorStyle }"
+      v-bind="$attrs"
+    >
       <slot />
     </ChildBlock>
   </div>
