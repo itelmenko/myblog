@@ -11,9 +11,9 @@
 </template>
 
 <script setup>
-import ParentBlock from "@/components/nested-components-with-styles/ParentBlock.vue";
-import ChildBlock from "@/components/nested-components-with-styles/ChildBlock.vue";
-import GrandBlock from "@/components/nested-components-with-styles/GrandBlock.vue";
+import ParentBlock from "@/components/nested-with-styles/ParentBlock.vue";
+import ChildBlock from "@/components/nested-with-styles/ChildBlock.vue";
+import GrandBlock from "@/components/nested-with-styles/GrandBlock.vue";
 </script>
 
 

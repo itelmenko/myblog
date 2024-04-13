@@ -4,7 +4,7 @@
   </ChildBlock>
 </template>
 <script setup>
-import ChildBlock from "@/components/nested-components-with-styles/ChildBlock.vue";
+import ChildBlock from "@/components/nested-with-styles/ChildBlock.vue";
 </script>
 
 <style>

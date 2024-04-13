@@ -9,14 +9,14 @@ const router = createRouter({
       component: import('../views/HomeView.vue')
     },
     {
-      path: '/nested-components-with-styles',
+      path: '/nested-with-styles',
       name: 'nested-with-styles',
-      component: () => import('../views/NestedComponentsWithStylesView.vue')
+      component: () => import('../views/NestedWithStylesView.vue')
     },
     {
-      path: '/nested-components-with-props',
+      path: '/nested-with-props',
       name: 'nested-with-props',
-      component: () => import('../views/NestedComponentsWithPropsView.vue')
+      component: () => import('../views/NestedWithPropsView.vue')
     },
     {
       path: '/nested-with-own-templates',

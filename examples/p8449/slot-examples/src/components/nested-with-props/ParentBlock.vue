@@ -4,7 +4,7 @@
   </ChildBlock>
 </template>
 <script setup>
-import ChildBlock from "@/components/nested-components-with-props/ChildBlock.vue";
+import ChildBlock from "@/components/nested-with-props/ChildBlock.vue";
 
 const props = defineProps({
   color: {

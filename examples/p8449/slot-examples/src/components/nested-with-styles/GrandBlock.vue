@@ -4,7 +4,7 @@
   </ParentBlock>
 </template>
 <script setup>
-import ParentBlock from "@/components/nested-components-with-styles/ParentBlock.vue";
+import ParentBlock from "@/components/nested-with-styles/ParentBlock.vue";
 </script>
 
 <style>
