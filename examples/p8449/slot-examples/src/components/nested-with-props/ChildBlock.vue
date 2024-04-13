@@ -1,16 +1,16 @@
 <template>
-  <div class="child-block-with-props" :style="{ backgroundColor: props.background, border: props.border } ">
+  <div class="child-block-with-props" :style="{ backgroundColor: props.backgroundColorStyle, border: props.borderStyle } ">
     <slot />
   </div>
 </template>
 
 <script setup>
 const props = defineProps({
-  background: {
+  backgroundColorStyle: {
     type: String,
     default: "yellowgreen"
   },
-  border: {
+  borderStyle: {
     type: String,
     default: "none"
   }

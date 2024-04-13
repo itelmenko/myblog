@@ -1,5 +1,5 @@
 <template>
-  <ChildBlock class="parent-block-with-props" border="1px dashed darkslategray" background="lightcoral" :style="{ color: props.color }">
+  <ChildBlock class="parent-block-with-props" borderStyle="1px dashed darkslategray" backgroundColorStyle="lightcoral" :style="{ color: props.textColorStyle }">
     <slot />
   </ChildBlock>
 </template>
@@ -7,7 +7,7 @@
 import ChildBlock from "@/components/nested-with-props/ChildBlock.vue";
 
 const props = defineProps({
-  color: {
+  textColorStyle: {
     type: String,
     default: "black"
   }

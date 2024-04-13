@@ -9,7 +9,7 @@ import ParentBlock from "@/components/nested-with-styles/ParentBlock.vue";
 
 <style>
 .grand-block-style {
-  background-color: coral;
+  background-color: orange;
   color: white;
 }
 </style>

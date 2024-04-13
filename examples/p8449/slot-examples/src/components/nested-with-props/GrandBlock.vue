@@ -1,5 +1,5 @@
 <template>
-  <ParentBlock class="grand-block-with-props" background="coral" color="white">
+  <ParentBlock class="grand-block-with-props" backgroundColorStyle="orange" textColorStyle="white">
     <slot />
   </ParentBlock>
 </template>

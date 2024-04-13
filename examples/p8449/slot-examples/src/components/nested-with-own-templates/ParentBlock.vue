@@ -1,7 +1,7 @@
 <template>
   <div class="parent-block-with-own-template">
     <div>Parent Content</div>
-    <ChildBlock border="1px dashed darkslategray" background="lightcoral" :style="{ color: props.color }" v-bind="$attrs">
+    <ChildBlock borderStyle="1px dashed darkslategray" backgroundColorStyle="lightcoral" :style="{ color: props.textColorStyle }" v-bind="$attrs">
       <slot />
     </ChildBlock>
   </div>
@@ -10,7 +10,7 @@
 <script setup>
 import ChildBlock from "@/components/nested-with-own-templates/ChildBlock.vue";
 const props = defineProps({
-  color: {
+  textColorStyle: {
     type: String,
     default: "black"
   }
