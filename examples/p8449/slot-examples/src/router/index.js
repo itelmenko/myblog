@@ -22,6 +22,11 @@ const router = createRouter({
       path: "/nested-with-own-templates",
       name: "nested-with-own-templates",
       component: () => import("../views/NestedWithOwnTemplates.vue")
+    },
+    {
+      path: "/nested-with-named-slots",
+      name: "nested-with-named-slots",
+      component: () => import("../views/NestedWithNamedSlots.vue")
     }
   ]
 });
