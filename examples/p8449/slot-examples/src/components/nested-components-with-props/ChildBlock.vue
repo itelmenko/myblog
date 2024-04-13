@@ -1,7 +1,6 @@
 <template>
   <div class="child-block-with-props" :style="{ backgroundColor: props.background, border: props.border } ">
     <slot />
-    {{ styles }}
   </div>
 </template>
 
@@ -20,7 +19,7 @@ const props = defineProps({
 
 <style>
 .child-block-with-props {
-  margin: 7px;
+  margin: 7px 0;
   padding: 7px;
   border-radius: 5px;
 }

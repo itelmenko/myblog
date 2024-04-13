@@ -6,7 +6,7 @@
 
 <style>
 .child-block-style {
-  margin: 7px;
+  margin: 7px 0;
   padding: 7px;
   border-radius: 5px;
   background-color: yellowgreen;
