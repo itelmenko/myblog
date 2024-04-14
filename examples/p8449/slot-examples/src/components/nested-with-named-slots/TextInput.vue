@@ -1,12 +1,16 @@
 <template>
   <div class="text-input-container">
     <slot name="prepend"></slot>
-    <input type="text" name="search" class="field" />
+    <input type="text" v-bind="$attrs" class="field" />
     <slot name="append"></slot>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+defineOptions({
+  inheritAttrs: false
+});
+</script>
 
 <style lang="scss">
 .text-input-container {

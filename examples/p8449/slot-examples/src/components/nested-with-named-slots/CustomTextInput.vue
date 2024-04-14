@@ -1,14 +1,16 @@
 <template>
-  <label>
-    <div v-if="label" class="label">
-      {{ label }}
-    </div>
+  <div class="custom-text-input-container">
+    <label v-if="$slots.label || label" :for="$attrs.id">
+      <slot name="label">
+        {{ label }}
+      </slot>
+    </label>
     <TextInput v-bind="$attrs">
       <template v-for="(slot, name) in $slots" v-slot:[name]="item">
         <slot :name="name" v-bind="item"></slot>
       </template>
     </TextInput>
-  </label>
+  </div>
 </template>
 
 <script setup>
@@ -19,10 +21,14 @@ defineProps({
     type: String
   }
 });
+
+defineOptions({
+  inheritAttrs: false
+});
 </script>
 
 <style scoped>
-.label {
+label {
   font-weight: 500;
 }
 </style>

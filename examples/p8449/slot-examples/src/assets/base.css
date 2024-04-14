@@ -84,3 +84,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+p {
+  border-inline-start: 3px solid;
+  padding-inline-start: 15px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  margin-top: 20px;
+  margin-bottom: 12px;
+}
