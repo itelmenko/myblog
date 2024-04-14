@@ -6,8 +6,8 @@
       </slot>
     </label>
     <TextInput v-bind="$attrs">
-      <template v-for="(slot, name) in $slots" v-slot:[name]="item">
-        <slot :name="name" v-bind="item"></slot>
+      <template v-for="(slot, name) in $slots" v-slot:[name]="slotProps">
+        <slot :name="name" v-bind="slotProps"></slot>
       </template>
     </TextInput>
   </div>
