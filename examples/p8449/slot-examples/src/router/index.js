@@ -27,6 +27,11 @@ const router = createRouter({
       path: "/nested-with-named-slots",
       name: "nested-with-named-slots",
       component: () => import("../views/NestedWithNamedSlots.vue")
+    },
+    {
+      path: "/nested-slots-in-same-component",
+      name: "nested-slots-in-same-component",
+      component: () => import("../views/NestedSlotsInSameComponentView.vue")
     }
   ]
 });

@@ -10,6 +10,7 @@ import { RouterLink, RouterView } from "vue-router";
       <RouterLink to="/nested-with-styles">Nested With CSS</RouterLink> |
       <RouterLink to="/nested-with-own-templates">Nested With Own Templates</RouterLink> |
       <RouterLink to="/nested-with-named-slots">Nested With Named Slots</RouterLink> |
+      <RouterLink to="/nested-slots-in-same-component">Nested Slots In Same Component</RouterLink>
     </nav>
   </header>
   <main>
