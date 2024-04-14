@@ -6,7 +6,7 @@ const router = createRouter({
     {
       path: "/",
       name: "home",
-      component: import("../views/HomeView.vue")
+      component: () => import("../views/HomeView.vue")
     },
     {
       path: "/nested-with-styles",
@@ -21,12 +21,12 @@ const router = createRouter({
     {
       path: "/nested-with-own-templates",
       name: "nested-with-own-templates",
-      component: () => import("../views/NestedWithOwnTemplates.vue")
+      component: () => import("../views/NestedWithOwnTemplatesView.vue")
     },
     {
       path: "/nested-with-named-slots",
       name: "nested-with-named-slots",
-      component: () => import("../views/NestedWithNamedSlots.vue")
+      component: () => import("../views/NestedWithNamedSlotsView.vue")
     },
     {
       path: "/nested-slots-in-same-component",

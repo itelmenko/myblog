@@ -85,6 +85,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+h1 {
+  margin-top: 20px;
+}
+
 p {
   border-inline-start: 3px solid;
   padding-inline-start: 15px;
