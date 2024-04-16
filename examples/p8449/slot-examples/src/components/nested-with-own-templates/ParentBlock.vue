@@ -20,6 +20,10 @@ const props = defineProps({
     default: "black"
   }
 });
+
+defineOptions({
+  inheritAttrs: false
+});
 </script>
 
 <style>

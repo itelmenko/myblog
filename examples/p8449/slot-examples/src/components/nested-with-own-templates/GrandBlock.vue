@@ -13,6 +13,10 @@
 </template>
 <script setup>
 import ParentBlock from "@/components/nested-with-own-templates/ParentBlock.vue";
+
+defineOptions({
+  inheritAttrs: false
+});
 </script>
 
 <style>
