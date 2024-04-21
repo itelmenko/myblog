@@ -1,6 +1,7 @@
 <template>
   <div class="parent-block-with-own-template">
     <div>Parent Content</div>
+    <!-- Применяем v-bind="$attrs", чтобы указать куда будут переданы атрибуты -->
     <ChildBlock
       borderStyle="1px dashed darkslategray"
       backgroundColorStyle="lightcoral"
@@ -21,6 +22,9 @@ const props = defineProps({
   }
 });
 
+/**
+ * Запрещаем передачу атрибутов в элемент div class="parent-block-with-own-template"
+ */
 defineOptions({
   inheritAttrs: false
 });
