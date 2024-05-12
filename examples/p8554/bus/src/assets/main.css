@@ -1,0 +1,23 @@
+@import './base.css';
+
+#app {
+  padding: 2em;
+}
+
+.value {
+  padding-inline-end: 7px;
+}
+
+button {
+  width: 1.8em;
+}
+
+button + button {
+  margin-inline-start: 3px;
+}
+
+.level {
+  padding: 1.5em;
+  border-radius: 5px;
+  margin: 1em;
+}
