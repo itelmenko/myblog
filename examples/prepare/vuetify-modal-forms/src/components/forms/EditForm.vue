@@ -19,6 +19,8 @@
 </template>
 
 <script setup>
+import { reactive, ref, toRefs } from "vue";
+
 const props = defineProps({
   id: { type: String },
   name: { type: String },
@@ -27,14 +29,8 @@ const props = defineProps({
 
 const emit = defineEmits(['done'])
 
-import { reactive, ref } from "vue";
-
 const loading = ref(false)
-const data = reactive({
-  id: props.id,
-  name: props.name,
-  description: props.description,
-})
+const data = reactive(toRefs(props))
 
 function handleSubmit()
 {
