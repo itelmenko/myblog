@@ -6,13 +6,15 @@
   </header>
 
   <main>
-    Скоро будет ...
+    <p>
+      Используйте кнопки ниже для вызова диалогов
+    </p>
     <br/>
-    <v-btn @click="showModal">Show</v-btn>
-    <v-btn @click="handleDelete">Delete</v-btn>
+    <v-btn @click="showModal">Редактирование</v-btn>
+    <v-btn @click="handleDelete">Удаление</v-btn>
   </main>
   <modal v-model="modal.visible" :title="modal.title">
-    <component :is="modal.form"></component>
+    <component :is="modal.form" v-bind="modal.props"></component>
   </modal>
 </template>
 
@@ -25,10 +27,16 @@ import DeleteForm from "@/components/forms/DeleteForm.vue";
 const modal = useModalStore();
 
 function showModal() {
-  modal.open('Test Modal', EditForm)
+  modal.open('Редактировать запись', EditForm, { id: 'JH219zA', name: 'Большой каньон' })
 }
 
 function handleDelete() {
-  modal.open('Delete', DeleteForm)
+  modal.open('Удалить запись', DeleteForm, { id: 'oAuu378' })
 }
 </script>
+
+<style>
+.v-btn + .v-btn {
+  margin-inline-start: 7px;
+}
+</style>

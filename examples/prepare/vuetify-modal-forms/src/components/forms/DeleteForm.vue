@@ -1,13 +1,13 @@
 <template>
-  <v-alert type="warning">Вы действительно хотите удалить запись?</v-alert>
-  <v-btn :loading="loading" @click="handleClick">Delete</v-btn>
+  <v-alert type="warning">Вы действительно хотите удалить запись {{ props.id }}?</v-alert>
+  <v-btn :loading="loading" block @click="handleClick" class="mt-2">Удалить</v-btn>
 </template>
 
 <script setup>
 import { ref } from "vue";
 import { useModalStore } from "@/stores/modal.js";
 
-defineProps({
+const props = defineProps({
   id: String
 })
 
@@ -16,7 +16,7 @@ const loading = ref(false)
 
 function handleClick() {
   loading.value = true
-  console.log('Deleting ...')
+  console.log(`Deleting ${props.id}...`)
   loading.value = false
   modal.close();
 }
