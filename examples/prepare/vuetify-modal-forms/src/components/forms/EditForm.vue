@@ -22,10 +22,10 @@ const props = defineProps({
   name: { type: String }
 })
 
-import { reactive, ref } from "vue";
-import { useModalStore } from "@/stores/modal.js";
+const emit = defineEmits(['done'])
 
-const modal = useModalStore()
+import { reactive, ref } from "vue";
+
 const loading = ref(false)
 const data = reactive({
   id: props.id,
@@ -37,7 +37,7 @@ function handleSubmit()
   loading.value = true
   console.log(`Updating ${props.id}...`)
   loading.value = false
-  modal.close();
+  emit('done')
 }
 
 </script>

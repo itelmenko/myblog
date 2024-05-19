@@ -5,19 +5,19 @@
 
 <script setup>
 import { ref } from "vue";
-import { useModalStore } from "@/stores/modal.js";
 
 const props = defineProps({
   id: String
 })
 
-const modal = useModalStore()
+const emit = defineEmits(['done'])
+
 const loading = ref(false)
 
 function handleClick() {
   loading.value = true
   console.log(`Deleting ${props.id}...`)
   loading.value = false
-  modal.close();
+  emit('done')
 }
 </script>

@@ -14,7 +14,7 @@
     <v-btn @click="handleDelete">Удаление</v-btn>
   </main>
   <modal v-model="modal.visible" :title="modal.title">
-    <component :is="modal.form" v-bind="modal.props"></component>
+    <component :is="modal.form" v-bind="modal.props" @done="modal.close()"></component>
   </modal>
 </template>
 
