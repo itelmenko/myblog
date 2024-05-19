@@ -6,6 +6,8 @@
         label="Имя"
     ></v-text-field>
 
+    <v-textarea v-model="data.description" label="Описание" variant="outlined"></v-textarea>
+
     <v-btn
         :loading="loading"
         class="mt-2"
@@ -19,7 +21,8 @@
 <script setup>
 const props = defineProps({
   id: { type: String },
-  name: { type: String }
+  name: { type: String },
+  description: { type: String }
 })
 
 const emit = defineEmits(['done'])
@@ -29,7 +32,8 @@ import { reactive, ref } from "vue";
 const loading = ref(false)
 const data = reactive({
   id: props.id,
-  name: props.name
+  name: props.name,
+  description: props.description,
 })
 
 function handleSubmit()

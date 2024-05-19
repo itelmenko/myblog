@@ -1,5 +1,5 @@
 <template>
-  <v-alert type="warning">Вы действительно хотите удалить запись {{ props.id }}?</v-alert>
+  <v-alert type="warning">Вы действительно хотите удалить запись &ldquo;{{ props.name }}&rdquo;?</v-alert>
   <v-btn :loading="loading" block @click="handleClick" class="mt-2">Удалить</v-btn>
 </template>
 
@@ -7,7 +7,8 @@
 import { ref } from "vue";
 
 const props = defineProps({
-  id: String
+  id: String,
+  name: { type: String }
 })
 
 const emit = defineEmits(['done'])

@@ -27,11 +27,15 @@ import DeleteForm from "@/components/forms/DeleteForm.vue";
 const modal = useModalStore();
 
 function showModal() {
-  modal.open('Редактировать запись', EditForm, { id: 'JH219zA', name: 'Большой каньон' })
+  modal.open('Редактировать запись', EditForm, {
+    id: 'JH219zA',
+    name: 'Большой каньон',
+    description: 'Гранд-Каньон в Аризоне – это уникальное природное образование.'
+  })
 }
 
 function handleDelete() {
-  modal.open('Удалить запись', DeleteForm, { id: 'oAuu378' })
+  modal.open('Удалить запись', DeleteForm, { id: 'oAuu378', name: 'Крупная рыба' })
 }
 </script>
 
