@@ -13,13 +13,13 @@
     <v-btn @click="showModal">Редактирование</v-btn>
     <v-btn @click="handleDelete">Удаление</v-btn>
   </main>
-  <modal v-model="modal.visible" :title="modal.title">
-    <component :is="modal.form" v-bind="modal.props" @done="modal.close()"></component>
-  </modal>
+  <app-modal v-model="modal.visible">
+    <component :is="modal.form" v-bind="modal.props" :title="modal.title" @done="modal.close()"></component>
+  </app-modal>
 </template>
 
 <script setup>
-import Modal from "@/components/Modal.vue";
+import AppModal from "@/components/AppModal.vue";
 import { useModalStore } from "@/stores/modal.js";
 import EditForm from "@/components/forms/EditForm.vue";
 import DeleteForm from "@/components/forms/DeleteForm.vue";
