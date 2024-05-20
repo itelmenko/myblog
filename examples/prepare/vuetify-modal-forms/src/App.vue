@@ -1,21 +1,23 @@
 <template>
-  <header>
-    <h1>
-      Пример для v-dlg
-    </h1>
-  </header>
+  <v-app>
+    <header>
+      <h1>
+        Пример для v-dlg
+      </h1>
+    </header>
 
-  <main>
-    <p>
-      Используйте кнопки ниже для вызова диалогов
-    </p>
-    <br/>
-    <v-btn @click="showModal">Редактирование</v-btn>
-    <v-btn @click="handleDelete">Удаление</v-btn>
-  </main>
-  <app-modal v-model="modal.visible">
-    <component :is="modal.form" v-bind="modal.props" :title="modal.title" @done="modal.close()"></component>
-  </app-modal>
+    <main>
+      <p>
+        Используйте кнопки ниже для вызова диалогов
+      </p>
+      <br/>
+      <v-btn @click="showModal">Редактирование</v-btn>
+      <v-btn @click="handleDelete">Удаление</v-btn>
+    </main>
+    <app-modal v-model="modal.visible">
+      <component :is="modal.form" v-bind="modal.props" :title="modal.title" @done="modal.close()"></component>
+    </app-modal>
+  </v-app>
 </template>
 
 <script setup>
@@ -40,6 +42,10 @@ function handleDelete() {
 </script>
 
 <style>
+header, main {
+  margin-inline-start: 2em;
+  margin-inline-end: 2em;
+}
 .v-btn + .v-btn {
   margin-inline-start: 7px;
 }
