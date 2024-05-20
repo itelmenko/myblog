@@ -1,17 +1,21 @@
 <template>
   <form-layout :title="props.title">
     <template #default>
-      <v-alert type="warning">Вы действительно хотите удалить запись &ldquo;{{ props.name }}&rdquo;?</v-alert>
+      <v-alert type="warning"
+        >Вы действительно хотите удалить запись &ldquo;{{ props.name }}&rdquo;?</v-alert
+      >
     </template>
     <template #actions>
-      <v-btn :loading="loading" color="warning" block @click="handleClick" class="mt-2">Удалить</v-btn>
+      <v-btn :loading="loading" color="warning" block @click="handleClick" class="mt-2"
+        >Удалить</v-btn
+      >
     </template>
   </form-layout>
 </template>
 
 <script setup>
-import { ref } from "vue";
-import FormLayout from "@/components/forms/FormLayout.vue";
+import { ref } from 'vue'
+import FormLayout from '@/components/forms/FormLayout.vue'
 
 const props = defineProps({
   id: String,

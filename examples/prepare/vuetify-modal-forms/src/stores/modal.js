@@ -7,16 +7,14 @@ export const useModalStore = defineStore('modal', () => {
   const form = shallowRef()
   const props = ref()
 
-  function open(modalTitle, content, data)
-  {
+  function open(modalTitle, content, data) {
     visible.value = true
     title.value = modalTitle
     form.value = content
     props.value = data
   }
 
-  function close()
-  {
+  function close() {
     visible.value = false
   }
 

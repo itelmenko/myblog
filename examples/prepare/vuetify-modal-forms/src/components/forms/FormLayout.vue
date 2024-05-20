@@ -11,13 +11,13 @@
 
 <script setup>
 defineProps({
-  title: { type: String },
+  title: { type: String }
 })
 </script>
 
 <style>
-  .form-layout__content {
-    overflow-y: auto;
-    padding-top: 12px !important;
-  }
+.form-layout__content {
+  overflow-y: auto;
+  padding-top: 12px !important;
+}
 </style>
