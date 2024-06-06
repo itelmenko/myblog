@@ -18,7 +18,7 @@ const selected = ref('text')
 
 <template>
   <header>
-    <h1>Динамические компоненты</h1>
+    <h1>Dynamic switching</h1>
   </header>
 
   <main>
@@ -39,10 +39,8 @@ const selected = ref('text')
 </template>
 
 <style>
-header,
-main {
-  margin-inline-start: 2em;
-  margin-inline-end: 2em;
+h1 {
+  text-align: center;
 }
 
 h2 {

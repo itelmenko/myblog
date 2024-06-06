@@ -1,7 +1,13 @@
 @import './base.css';
 
 #app {
+  display: inline-block;
+  min-height: 550px;
   font-weight: normal;
+  border: 1px solid midnightblue;
+  border-radius: 6px;
+  margin: 15px;
+  padding: 15px;
 }
 
 a,
