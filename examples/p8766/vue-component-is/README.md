@@ -1,6 +1,6 @@
 # vue-component-is
 
-This template should help get you started developing with Vue 3 in Vite.
+Vue. Пример динамической вставки компонентов через конструкцию `component`  с атрибутом `is`.
 
 ## Recommended IDE Setup
 

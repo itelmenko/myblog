@@ -1,6 +1,6 @@
 # vuetify-modal-forms
 
-This template should help get you started developing with Vue 3 in Vite.
+Пример динамической вставки компонента через атрибут `is` для отображения форм в модальных окнах Vuetify. 
 
 ## Recommended IDE Setup
 
