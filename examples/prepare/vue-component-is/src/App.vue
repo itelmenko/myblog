@@ -33,6 +33,7 @@ const selected = ref('text')
 
     <h2>Result</h2>
 
+    <!-- Здесь будет отображаться выбранный компонент -->
     <component :is="settings[selected].component" v-bind="settings[selected].data"></component>
   </main>
 </template>

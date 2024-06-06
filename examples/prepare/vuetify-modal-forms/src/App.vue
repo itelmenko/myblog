@@ -1,15 +1,17 @@
 <template>
   <v-app>
     <header>
-      <h1>Пример для v-dlg</h1>
+      <h1>Пример для v-dlg и v-navigation-drawer</h1>
     </header>
 
     <main>
-      <p>Используйте кнопки ниже для вызова диалогов</p>
+      <p>Используйте кнопки ниже для вызова форм</p>
       <br />
       <v-btn @click="showModal">Редактирование</v-btn>
       <v-btn @click="handleDelete">Удаление</v-btn>
     </main>
+
+    <!-- В слот модального окна встраиваем нужный компонент динамически -->
     <app-modal v-model="modal.visible">
       <component
         :is="modal.form"

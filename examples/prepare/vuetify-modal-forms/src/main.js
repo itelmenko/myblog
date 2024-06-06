@@ -12,7 +12,10 @@ import * as directives from 'vuetify/directives'
 
 const vuetify = createVuetify({
   components,
-  directives
+  directives,
+  display: {
+    mobileBreakpoint: 'sm'
+  }
 })
 
 const app = createApp(App)

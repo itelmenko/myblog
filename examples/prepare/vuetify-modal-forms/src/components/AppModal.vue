@@ -1,4 +1,5 @@
 <template>
+  <!-- Вызываем мобильную или обычную версию -->
   <component :is="component">
     <slot></slot>
   </component>
