@@ -5,4 +5,8 @@ describe('My First Test', () => {
     cy.visit('/')
     cy.contains('h1', 'You did it!')
   })
+  it('visits the about url', () => {
+    cy.visit('/about')
+    cy.contains('h1', 'This is an about page')
+  })
 })
