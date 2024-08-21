@@ -2,16 +2,16 @@
   <main class="about">
     <div>
       <h1>This is an about page</h1>
-      <div v-if="visible" class="hidden-area">
+      <div v-if="visible" data-test="hidden-area">
         <h2>Hidden area</h2>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc in nulla id mi sodales dapibus.
         </p>
       </div>
-      <button v-else class="my-button" @click="visible = true">Show hidden area</button>
+      <button v-else data-test="main-button" @click="visible = true">Show hidden area</button>
       <div class="backend-section">
-        <p>Load data from backend: <span class="message" v-if="backendMessage">{{ backendMessage }}</span></p>
-        <button v-if="!backendMessage" class="load-button" @click="load()">Load</button>
+        <p>Load data from backend: <span data-test="message" v-if="backendMessage">{{ backendMessage }}</span></p>
+        <button v-if="!backendMessage" data-test="load-button" @click="load()">Load</button>
       </div>
     </div>
   </main>

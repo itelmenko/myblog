@@ -12,9 +12,9 @@ describe('My First Test', () => {
 
     it('show hidden area', () => {
         cy.visit('/about')
-        cy.get('.hidden-area').should('not.exist')
-        cy.get('.my-button').click()
-        cy.get('.hidden-area').should('be.visible')
+        cy.get('[data-test=hidden-area]').should('not.exist')
+        cy.get('[data-test=main-button]').click()
+        cy.get('[data-test=hidden-area]').should('be.visible')
     })
 
     it('load data from backend', () => {
@@ -26,7 +26,7 @@ describe('My First Test', () => {
             },
         })
 
-        cy.get('.load-button').click()
-        cy.get('.message').contains('Hello world')
+        cy.get('[data-test=load-button]').click()
+        cy.get('[data-test=message]').contains('Hello world')
     })
 })
