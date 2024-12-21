@@ -11,6 +11,7 @@ export default defineConfig({
       framework: "vue",
       bundler: "vite",
     },
+    specPattern: 'cypress/components/**/*.cy.{js,jsx,ts,tsx}', // Путь к компонентным тестам
   },
 
   viewportWidth: 1000,

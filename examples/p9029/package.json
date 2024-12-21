@@ -7,7 +7,10 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint . --fix"
+    "lint": "eslint . --fix",
+    "test:e2e": "cypress run --e2e",
+    "test:component": "cypress run --component",
+    "test:all": "npm run test:e2e && npm run test:component"
   },
   "dependencies": {
     "@mdi/font": "7.4.47",
