@@ -40,6 +40,9 @@
               <div class="text-subtitle-1">
                 Replace this page by removing <v-kbd>{{ `<HelloWorld />` }}</v-kbd> in <v-kbd>pages/index.vue</v-kbd>.
               </div>
+              <div data-test="property-value">
+                {{ word }}
+              </div>
             </template>
 
             <v-overlay
@@ -153,5 +156,7 @@
 </template>
 
 <script setup>
-  //
+  defineProps({
+    word: { type: String, default: ""},
+  })
 </script>
