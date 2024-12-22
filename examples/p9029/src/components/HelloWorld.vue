@@ -16,8 +16,6 @@
         <h1 class="text-h2 font-weight-bold">Vuetify</h1>
       </div>
 
-      <v-btn @click="console.log('click')">Нажми</v-btn>
-
       <div class="py-4" />
 
       <v-row>
