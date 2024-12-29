@@ -16,6 +16,8 @@
 // Import commands.js using ES2015 syntax:
 import './commands'
 
+import _ from 'lodash'
+
 import { mount } from 'cypress/vue';
 import { createVuetify } from 'vuetify';
 import 'vuetify/styles'; // Подключение стилей Vuetify
@@ -33,5 +35,7 @@ Cypress.Commands.add('mount', (component, options = {}) => {
     },
   };
 
-  return mount(component, { ...defaultOptions, ...options });
+  const mergedOptions = _.merge({}, defaultOptions, options);
+
+  return mount(component, mergedOptions);
 });
