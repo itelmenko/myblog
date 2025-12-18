@@ -1,4 +1,5 @@
 import { defineConfig, devices } from '@playwright/experimental-ct-vue';
+import { fileURLToPath, URL } from 'node:url';
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -27,6 +28,18 @@ export default defineConfig({
 
     /* Port to use for Playwright component endpoint. */
     ctPort: 3100,
+
+    /* Path to the component test setup file */
+    ctTemplateDir: './playwright',
+
+    /* Vite config for component tests */
+    ctViteConfig: {
+      resolve: {
+        alias: {
+          '@': fileURLToPath(new URL('./src', import.meta.url)),
+        },
+      },
+    },
   },
 
   /* Configure projects for major browsers */
