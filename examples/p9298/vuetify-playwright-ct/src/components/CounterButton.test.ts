@@ -46,9 +46,9 @@ test('кнопка сброса отключена когда счетчик р�
   const component = await mount(CounterButton)
   
   // Проверяем, что кнопка сброса отключена при начальном значении
-  // Vuetify использует атрибут disabled="true" для отключенной кнопки
+  // В реальном DOM это обычная кнопка: атрибут `disabled` присутствует и обычно равен пустой строке.
   const resetButton = component.getByTestId('reset-button')
-  await expect(resetButton).toHaveAttribute('disabled', 'true')
+  await expect(resetButton).toBeDisabled()
   
   // Увеличиваем счетчик
   await component.getByTestId('increment-button').click()
@@ -62,7 +62,7 @@ test('кнопка сброса отключена когда счетчик р�
   await resetButton.click()
   
   // Проверяем, что кнопка сброса снова отключена
-  await expect(resetButton).toHaveAttribute('disabled', 'true')
+  await expect(resetButton).toBeDisabled()
 })
 
 test('отображает правильный заголовок', async ({ mount }) => {
