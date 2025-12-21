@@ -2,7 +2,7 @@
 import '@mdi/font/css/materialdesignicons.css'
 import 'vuetify/styles'
 
-// Playwright CT hooks (required: exporting beforeMount is NOT enough)
+// Playwright CT hooks
 import { beforeMount } from '@playwright/experimental-ct-vue/hooks'
 
 // Import Vuetify
