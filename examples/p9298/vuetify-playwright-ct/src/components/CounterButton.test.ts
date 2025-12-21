@@ -71,4 +71,3 @@ test('отображает правильный заголовок', async ({ mo
   // Проверяем наличие заголовка
   await expect(component.getByText('Счетчик кликов')).toBeVisible()
 })
-
